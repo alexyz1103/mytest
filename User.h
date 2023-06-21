@@ -11,10 +11,17 @@ protected:
 	string password;
 	bool admin;
 public:
-	User(string login, string password, bool admin) : login{ login }, password{ password }, admin{ admin }{}
-	User(): User(string(),string(),false){}
+	User(string login, string password, bool admin = false) : 
+		login{ login }, password{ password }, admin{ admin }{}
+	User(): User(string(),string()){}
+	
+	/*User(User &user){
+		this->login = user.admin;
+		this->password = user.password;
+		this->admin = user.admin;
+	}*/
 
-	virtual void print();
+	void print();
 	bool operator==(User& user);
 	bool operator!=(User& user);
 	bool getAdmin();

@@ -3,6 +3,8 @@
 #include <vector>
 #include <fstream>
 #include "User.h"
+#include "Admin.h"
+
 using namespace std;
 
 void enter();
@@ -11,7 +13,7 @@ void checkadmin(User& user);
 void registration();
 list<User> getUsers();
 void runAdmin(User& user);
-void runTester(User& user);
+//void runTester(User& user);
 string pathUsers = "users.txt";
 
 int main()
@@ -37,7 +39,7 @@ void enter()
         {
         case 1: {
             User nulluser;
-            User tempUser = authorization();
+            User tempUser = authorization();;
             if (tempUser != nulluser) {
                 checkadmin(tempUser);
             }            
@@ -67,13 +69,13 @@ User authorization()
     string password;
     cout << "Пароль:";
     cin >> password;
-    User tempuser(login, password,false);
+    User tempuser(login, password);
     for (auto item : users) {
         if (tempuser == item) {
             return tempuser;
         }
     }
-    User nulluser("", "", false);
+    User nulluser;
     return nulluser;
 }
 
@@ -87,7 +89,7 @@ void checkadmin(User& user)
                 runAdmin(item);
             }
             else {
-                runTester(item);
+                //runTester(item);
             }
         }
     }
@@ -95,7 +97,6 @@ void checkadmin(User& user)
 
 void registration()
 {
-    cout << "registration()" << endl;
 }
 
 list<User> getUsers()
@@ -137,5 +138,7 @@ list<User> getUsers()
 
 void runAdmin(User& user)
 {
+    cout << "Админка" << endl;
+    system("pause");
 
 }

@@ -6,11 +6,12 @@
 using namespace std;
 
 void enter();
-bool authorization();
-void run();
+User authorization();
+void checkadmin(User& user);
 void registration();
 list<User> getUsers();
-
+void runAdmin(User& user);
+void runTester(User& user);
 string pathUsers = "users.txt";
 
 int main()
@@ -35,7 +36,11 @@ void enter()
         switch (answer)
         {
         case 1: {
-            if (authorization()) run();
+            User nulluser;
+            User tempUser = authorization();
+            if (tempUser != nulluser) {
+                checkadmin(tempUser);
+            }            
             break;
         }
         case 2: {
@@ -53,7 +58,7 @@ void enter()
     }
 }
 
-bool authorization()
+User authorization()
 {
     list<User> users = getUsers();
     string login;
@@ -62,14 +67,30 @@ bool authorization()
     string password;
     cout << "Пароль:";
     cin >> password;
-    User tempuser(login, password);
-
-    return false;
+    User tempuser(login, password,false);
+    for (auto item : users) {
+        if (tempuser == item) {
+            return tempuser;
+        }
+    }
+    User nulluser("", "", false);
+    return nulluser;
 }
 
-void run()
+void checkadmin(User& user)
 {
-    cout << "run()" << endl;
+    list<User> users = getUsers();
+    for (auto item: users)
+    {
+        if (item == user) {
+            if (item.getAdmin()) {
+                runAdmin(item);
+            }
+            else {
+                runTester(item);
+            }
+        }
+    }
 }
 
 void registration()
@@ -102,10 +123,19 @@ list<User> getUsers()
                 }
             }
             userwords.push_back(word);
-            User newUser(userwords[0],userwords[1]);
+            bool admin = false;
+            if (userwords[2] == "1") {
+                admin = true;
+            }
+            User newUser(userwords[0],userwords[1],admin);
             users.push_back(newUser);
         }
     }
     file.close();
     return users;
+}
+
+void runAdmin(User& user)
+{
+
 }

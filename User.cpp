@@ -29,3 +29,12 @@ bool User::getAdmin()
 {
 	return admin;
 }
+
+User User::operator=(const User& user)
+{
+	this->id = user.id;
+	this->login = user.admin;
+	this->password = user.password;
+	this->admin = user.admin;
+	return *this;
+}

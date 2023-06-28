@@ -4,7 +4,6 @@
 class Tested : public User
 {
 private:
-	int id;
 	string lastname;
 	string name;
 	string secondname;
@@ -17,7 +16,7 @@ private:
 public:
 	Tested(int id, string login, string password, string lastname, 
 		string name, string secondname, string adress,
-		string tel, map<string, int> rezult): User(login,password) {
+		string tel, map<string, int> rezult): User(id,login,password) {
 		this->id = id;
 		this->lastname = lastname;
 		this->name = name;

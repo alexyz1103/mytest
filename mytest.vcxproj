@@ -139,12 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Project35\Project35.cpp" />
+    <ClCompile Include="..\Project35\Question.cpp" />
+    <ClCompile Include="..\Project35\Test.cpp" />
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="mytest.cpp" />
     <ClCompile Include="Tested.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Project35\Question.h" />
+    <ClInclude Include="..\Project35\Test.h" />
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Tested.h" />
     <ClInclude Include="User.h" />

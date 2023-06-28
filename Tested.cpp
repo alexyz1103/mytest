@@ -27,6 +27,6 @@ int Tested::Idgenerator()
 
 void Tested::print()
 {
-    cout << lastname << " " << name << " " << secondname << endl
-        << 
+    //cout << lastname << " " << name << " " << secondname << endl
+    //    << 
 }

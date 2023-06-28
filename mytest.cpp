@@ -19,7 +19,7 @@ string pathUsers = "users.txt";
 int main()
 {
     setlocale(LC_ALL, "russian");
-    enter();    
+    enter(); 
 }
 
 void enter()
@@ -69,7 +69,7 @@ User authorization()
     string password;
     cout << "Пароль:";
     cin >> password;
-    User tempuser(login, password);
+    User tempuser(0,login, password);
     for (auto item : users) {
         if (tempuser == item) {
             return tempuser;
@@ -125,10 +125,10 @@ list<User> getUsers()
             }
             userwords.push_back(word);
             bool admin = false;
-            if (userwords[2] == "1") {
+            if (userwords[3] == "1") {
                 admin = true;
             }
-            User newUser(userwords[0],userwords[1],admin);
+            User newUser(stoi(userwords[0]),userwords[1], userwords[2],admin);
             users.push_back(newUser);
         }
     }
